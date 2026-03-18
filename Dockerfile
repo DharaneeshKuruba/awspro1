@@ -2,9 +2,12 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY . .
+COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt -v
+
+COPY . .
 
 EXPOSE 5000
 
